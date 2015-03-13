@@ -108,3 +108,8 @@ In `server/includes/layout.jade` I had to include `base(href="/")` in the head a
 and define a block for the main content witn `block main-content` inside the body
 
 ### MongoDB
+I used HomeBrew to set up MongoDB http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/ 
+Find the MongoDB set up that works for you.
+Run `brew update` and the `brew install mongodb`
+Install Mongoose `npm install mongoose --save`
+Add the mongoose module to `server.js` below `bodyParser` add `mongoose = require('mongoose');` 
