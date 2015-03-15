@@ -113,3 +113,34 @@ Find the MongoDB set up that works for you.
 Run `brew update` and the `brew install mongodb`
 Install Mongoose `npm install mongoose --save`
 Add the mongoose module to `server.js` below `bodyParser` add `mongoose = require('mongoose');` 
+Below the config section in `server.js` add the database connection and set it to a variable
+I called my database `mean-stack`
+```
+mongoose.connect('mongodb://localhost/mean-stack'); 
+var db = mongoose.connection;
+```
+Below this add some error handling
+```
+db.on('error', console.error.bind(console, 'connection error...'));
+db.once('open', function callback() {
+	console.log('mean-stack, db opened');
+});
+```
+Restart the sever and check for errors `nodemon server.js`
+The last thing you should see when the server starts is `meant-stack db opened`
+Below the error handeling add
+```
+var messageSchema = mongoose.Schema({message: String});
+var Message = mongoose.model('Message', messageSchema);
+var mongoMessage;
+Message.findOne().exec(function(err, messageDoc) {
+	mongoMessage = messageDoc.message;
+});
+```
+In `server/views/index.jade` below `div(ng-view)` add `h2= mongoMessage`
+In the terminal open the Mongo shell by typing `mongo`
+Switch to the database you want to use `use mean-stack`
+`db.messages.insert({message: 'Hello Mongo'})`
+If your server isn't running still `nodemon server.js` and reload your page in the browser
+
+Now all the major components are working!!!!
