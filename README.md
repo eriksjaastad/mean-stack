@@ -1,5 +1,7 @@
 # mean-stack
 First MEAN stack project
+From Joe Eams
+https://www.codeschool.com/pluralsight-courses/building-angularjs-and-node-js-apps-with-the-mean-stack
 
 ## Walking Skeleton
 1. End to End
