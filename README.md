@@ -115,7 +115,7 @@ Find the MongoDB set up that works for you.<br>
 Run `brew update` and the `brew install mongodb`<br>
 Homebrew hid a feature we're going to need.<br>
 `curl -o /usr/local/bin/brew-services.rb https://gist.githubusercontent.com/lwe/766293/raw/75a7907004bbff0eb3b072d1d951be2cfe7e5020/brew-services.rb`<br>
-`hmod +x /usr/local/bin/brew-services.rb`<br>
+`chmod +x /usr/local/bin/brew-services.rb`<br>
 Check to make sure it worked: `brew services help`<br>
 Install Mongoose `npm install mongoose --save`<br>
 Add the mongoose module to `server.js` below `bodyParser` add `mongoose = require('mongoose');` <br>
@@ -151,3 +151,12 @@ Switch to the database you want to use `use mean-stack`<br>
 If your server isn't running still `nodemon server.js` and reload your page in the browser
 
 Now all the major components are working!!!!
+
+After setting up the remote database connection I had a problem with my local connection (errno:61 Connection refused)... These are the steps I took.
+1. `brew uninstall mongodb` Uninstall MongoDB
+2. `brew update` update Homebrew
+3. `brew install mongodb` reinstall MongoDB
+4. `sudo mongod` This runs Mongo as root and gives it permission to the mongod.lock file.
+5. Open a new tab in your Terminal
+6. `mongo` this should get everything up and running locally again
+7. In a 3rd tab, run `nodemon server.js`
