@@ -32,7 +32,12 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));
 
 // Connect to Mongodb
-mongoose.connect('mongodb://localhost/mean-stack');
+if(env === 'development') {
+	mongoose.connect('mongodb://localhost/mean-stack');
+} else {
+	mongoose.connect('mongodb://Erik:MeanStack@ds061218.mongolab.com:61218/mean-stack');	
+}
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
@@ -56,6 +61,6 @@ app.get('*', function(req, res) {
 	});
 });
 
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log('Listening on port ' + port + '...');

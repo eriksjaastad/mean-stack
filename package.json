@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.5.x"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/eriksjaastad/mean-stack.git"
@@ -20,7 +24,7 @@
     "body-parser": "^1.12.0",
     "express": "^4.12.2",
     "jade": "^1.9.2",
-    "mongoose": "^3.8.25",
+    "mongoose": "^3.9.7",
     "morgan": "^1.5.1",
     "stylus": "^0.50.0"
   },
