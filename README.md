@@ -153,6 +153,7 @@ If your server isn't running still `nodemon server.js` and reload your page in t
 Now all the major components are working!!!!
 
 After setting up the remote database connection I had a problem with my local connection (errno:61 Connection refused)... These are the steps I took.
+
 1. `brew uninstall mongodb` Uninstall MongoDB
 2. `brew update` update Homebrew
 3. `brew install mongodb` reinstall MongoDB
@@ -160,3 +161,5 @@ After setting up the remote database connection I had a problem with my local co
 5. Open a new tab in your Terminal
 6. `mongo` this should get everything up and running locally again
 7. In a 3rd tab, run `nodemon server.js`
+
+
