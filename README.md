@@ -3,6 +3,8 @@ First MEAN stack project<br>
 From Joe Eams<br>
 https://www.codeschool.com/pluralsight-courses/building-angularjs-and-node-js-apps-with-the-mean-stack
 
+#Remember to fix mongoose.js so that the salt and hashed_pwd are not sent back down to the client.
+
 ## Walking Skeleton
 1. End to End
 2. Main architectural components
