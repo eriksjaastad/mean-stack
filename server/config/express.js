@@ -1,7 +1,10 @@
 var express = require('express'),
 	logger = require('morgan'),
 	bodyParser = require('body-parser'),
-	stylus = require('stylus');
+	stylus = require('stylus'),
+	cookieParser = require('cookie-parser'),
+	session = require('express-session'),
+	passport = require('passport');
 
 module.exports = function(app, config) {
 	function compile(str, path) {
@@ -12,9 +15,16 @@ module.exports = function(app, config) {
 	app.set('views', config.rootPath + '/server/views');
 	app.set('view engine', 'jade');
 	app.use(logger('dev'));
+	app.use(cookieParser());
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({
 		extended: true
+	}));
+	app.use(passport.initialize());
+	app.use(passport.session({
+		secret: 'mean-stack secret',
+		resave: true,
+		saveUninitialized: true
 	}));
 	app.use(stylus.middleware(
 		{
