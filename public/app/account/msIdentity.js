@@ -1,6 +1,10 @@
-angular.module('app').factory('msIdentity', function() {
+angular.module('app').factory('msIdentity', function($window) {
+	var currentUser;
+	if(!!$window.bootstrappedUserObject) {
+		currentUser = $window.bootstrappedUserObject;
+	}
 	return {
-		currentUser: undefined,
+		currentUser: currentUser,
 		isAuthenticated: function() {
 			return !!this.currentUser;
 		}
