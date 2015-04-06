@@ -1,6 +1,6 @@
 # mean-stack
 First MEAN stack project<br>
-From Joe Eams<br>
+From Joe Eames<br>
 https://www.codeschool.com/pluralsight-courses/building-angularjs-and-node-js-apps-with-the-mean-stack
 
 #To Do
