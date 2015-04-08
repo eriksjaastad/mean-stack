@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	Schema = mongoose.Schema,
 	crypto = require('crypto');
 
 module.exports = function(config) {
@@ -9,12 +10,13 @@ module.exports = function(config) {
 		console.log('mean-stack, db opened');
 	});
 
-	var userSchema = mongoose.Schema({
+	var userSchema = new Schema({
 		firstName: String,
 		lastName: String,
 		username: String,
 		salt: String,
-		hashed_pwd: String
+		hashed_pwd: String,
+		roles: [String]
 	});
 
 	userSchema.methods = {
@@ -24,18 +26,18 @@ module.exports = function(config) {
 	}
 
 	var User = mongoose.model('User', userSchema);
-	User.find({}).exec(function(err,collection) {
+	User.find({}).exec(function(err, collection) {
 		if(collection.length === 0) {
 			var salt, hash;
 			salt = createSalt();
 			hash = hashPwd(salt, 'Erik');
-			User.create({firstName:'Erik',lastName:'Sjaastad',username:'Erik',salt:salt,hashed_pwd:hash});
+			User.create({firstName:'Erik', lastName:'Sjaastad', username:'Erik', salt:salt, hashed_pwd:hash, roles: 'admin'});
 			salt = createSalt();
 			hash = hashPwd(salt, 'User1');
-			User.create({firstName:'user1',lastName:'user1lastname',username:'User1',salt:salt,hashed_pwd:hash});
+			User.create({firstName:'user1', lastName:'user1lname', username:'User1', salt:salt, hashed_pwd:hash});
 			salt = createSalt();
 			hash = hashPwd(salt, 'User2');
-			User.create({firstName:'user2',lastName:'user2lastname',username:'User2',salt:salt,hashed_pwd:hash});
+			User.create({firstName:'user2', lastName:'user2lname', username:'User2', salt:salt, hashed_pwd:hash});
 		}
 	});
 }
