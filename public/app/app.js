@@ -13,7 +13,7 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 			controller: 'msUserListCtrl', resolve: routeRoleChecks.admin
 		})
 		.when('/signup', { templateUrl: '/partials/account/signup', 
-			controller: 'msSignUpCtrl'
+			controller: 'msSignupCtrl'
 		})
 });
 
