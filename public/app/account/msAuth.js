@@ -14,6 +14,21 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 			});
 			return dfd.promise;
 		},
+
+		createUser: function(newUserData) {
+			var newUser = new msUser(newUserData);
+			var dfd = $q.defer();
+
+			newUser.$save().then(function() {
+				msIdentity.currentUser = newUser;
+				dfd.resolve();
+			}, function(response) {
+				dfd.reject(response.data.reason);
+			});
+
+			return dfd.promise;
+		},
+
 		logoutUser: function() {
 			var dfd = $q.defer();
 			$http.post('/logout', {logout:true}).then(function() {

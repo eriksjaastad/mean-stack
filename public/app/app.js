@@ -11,7 +11,10 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 		.when('/', { templateUrl: '/partials/main/main', controller: 'msMainCtrl' })
 		.when('/admin/users', { templateUrl: '/partials/admin/user-list', 
 			controller: 'msUserListCtrl', resolve: routeRoleChecks.admin
-		});
+		})
+		.when('/signup', { templateUrl: '/partials/account/signup', 
+			controller: 'msSignUpCtrl'
+		})
 });
 
 angular.module('app').run(function($rootScope, $location) {
