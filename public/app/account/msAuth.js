@@ -29,6 +29,20 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 			return dfd.promise;
 		},
 
+		updateCurrentUser: function(newUserData) {
+			var dfd = $q.defer();
+
+			var clone = angular.copy(msIdentity.currentUser);
+			angular.extend(clone, newUserData);
+			clone.$update().then(function() {
+				msIdentity.currentUser = clone;
+				dfd.resolve();
+			}, function(response) {
+				dfd.reject(response.data.resaon);
+			});
+			return dfd.promise;
+		},
+
 		logoutUser: function() {
 			var dfd = $q.defer();
 			$http.post('/logout', {logout:true}).then(function() {
