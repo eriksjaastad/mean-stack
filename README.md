@@ -7,6 +7,8 @@ https://www.codeschool.com/pluralsight-courses/building-angularjs-and-node-js-ap
 1. Fix mongoose.js or models/User.js so that the salt and hashed_pwd are not sent back down to the client.
 2. Use https://www.npmjs.com/package/bcrypt instead of sha1 for encryption
 3. Add tests for sign up
+4. Add second field to sign up for password check
+5. When user edits their profile have them enter their password twice
 
 ## Walking Skeleton
 1. End to End
