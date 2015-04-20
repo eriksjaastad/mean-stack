@@ -43,6 +43,13 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 			} else {
 				return $q.reject('not authorized');
 			}
+		},
+		authorizeAuthenticateUserForRoute: function() {
+			if(msIdentity.isAuthenticated()) {
+				return true;
+			} else {
+				return $q.reject('not authorized');
+			}
 		}
 	}
-})
+});

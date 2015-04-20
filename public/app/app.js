@@ -3,7 +3,10 @@ angular.module('app', ['ngResource', 'ngRoute']);
 angular.module('app').config(function($routeProvider, $locationProvider) {
 	var routeRoleChecks = {
 		admin: {auth: function(msAuth) {
-			return msAuth.authorizeCurrentUserForRoute('admin');
+			return msAuth.authorizeCurrentUserForRoute('admin')
+		}},
+		user: {auth: function(msAuth) {
+			return msAuth.authorizeAuthenticatedUserForRoute()
 		}}
 	}
 	$locationProvider.html5Mode(true);
@@ -14,6 +17,9 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 		})
 		.when('/signup', { templateUrl: '/partials/account/signup', 
 			controller: 'msSignupCtrl'
+		})
+		.when('/profile', { templateUrl: '/partials/account/profile', 
+			controller: 'msProfileCtrl', resolve: routeRoleChecks.user
 		})
 });
 
