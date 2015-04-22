@@ -7,14 +7,14 @@ angular.module('app').controller('msProfileCtrl', function($scope, msAuth, msIde
 		var newUserData = {
 			username: $scope.email,
 			firstName: $scope.fname,
-			lastname: $scope.lname
+			lastName: $scope.lname
 		}
 		if($scope.password && $scope.password.length > 0) {
 			newUserData.password = $scope.password;
 		}
 
 		msAuth.updateCurrentUser(newUserData).then(function() {
-			msNotifier.notify('Your account has been updated');
+			msNotifier.notify('Your user account has been updated');
 		}, function(reason) {
 			msNotifier.error(reason);
 		})

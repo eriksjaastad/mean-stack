@@ -29,6 +29,7 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 			return dfd.promise;
 		},
 
+
 		updateCurrentUser: function(newUserData) {
 			var dfd = $q.defer();
 
@@ -38,7 +39,7 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 				msIdentity.currentUser = clone;
 				dfd.resolve();
 			}, function(response) {
-				dfd.reject(response.data.resaon);
+				dfd.reject(response.data.reason);
 			});
 			return dfd.promise;
 		},
@@ -58,7 +59,7 @@ angular.module('app').factory('msAuth', function($http, msIdentity, $q, msUser) 
 				return $q.reject('not authorized');
 			}
 		},
-		authorizeAuthenticateUserForRoute: function() {
+		authorizeAuthenticatedUserForRoute: function() {
 			if(msIdentity.isAuthenticated()) {
 				return true;
 			} else {
