@@ -21,6 +21,9 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 		.when('/profile', { templateUrl: '/partials/account/profile', 
 			controller: 'msProfileCtrl', resolve: routeRoleChecks.user
 		})
+		.when('/courses', { templateUrl: '/partials/courses/course-list', 
+			controller: 'msCourseListCtrl'
+		})
 });
 
 angular.module('app').run(function($rootScope, $location) {
@@ -29,4 +32,4 @@ angular.module('app').run(function($rootScope, $location) {
 			$location.path('/');
 		}
 	})
-})
+});
