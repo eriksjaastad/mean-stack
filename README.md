@@ -1,7 +1,7 @@
 # mean-stack
 First MEAN stack project<br>
 From Joe Eames https://github.com/joeeames<br>
-https://www.codeschool.com/pluralsight-courses/building-angularjs-and-node-js-apps-with-the-mean-stack
+https://enigmatic-savannah-9134.herokuapp.com/
 
 #To Do
 1. Fix mongoose.js or models/User.js so that the salt and hashed_pwd are not sent back down to the client.
